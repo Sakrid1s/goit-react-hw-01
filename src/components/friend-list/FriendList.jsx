@@ -1,10 +1,20 @@
-// import css from './FriendList.module.css';
+import css from './FriendList.module.css';
+import FriendListItem from '../friend-list-item/FriendListItem';
 
-const FriendList = () => {
+const FriendList = ({ friends }) => {
   return (
-    <ul>
-      {/* Кількість li залежить від кількості об'єктів в масиві */}
-      <li></li>
+    <ul className={css.friendsList}>
+      {friends.map(friend => {
+        return (
+          <li key={friend.id} className={css.friendListItem}>
+            <FriendListItem
+              avatar={friend.avatar}
+              name={friend.name}
+              isOnline={friend.isOnline}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };
